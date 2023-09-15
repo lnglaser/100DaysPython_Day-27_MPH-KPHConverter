@@ -13,8 +13,11 @@ def convert():
 
 
 # Add placeholder text later
-user_input = Entry(width=5)
+user_input = Entry(width=10)
 user_input.grid(column=1, row=0)
+user_input.insert(0, "Enter # of miles")
+user_input.focus()
+
 
 convert_from = Label(text="Miles")
 convert_from.grid(column=2, row=0)
