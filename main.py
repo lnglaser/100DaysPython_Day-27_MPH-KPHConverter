@@ -8,9 +8,8 @@ window.config(padx=50, pady=20)
 
 
 def convert():
-    miles_value = user_input.get()
-    if miles_value.replace(".", "").isnumeric():
-        kilometers = float(miles_value) * 1.609
+    if (user_input.get()).replace(".", "").isnumeric():
+        kilometers = float(user_input.get()) * 1.609
         converted_amount.config(text=kilometers)
         error_message.config(text="")
     else:
