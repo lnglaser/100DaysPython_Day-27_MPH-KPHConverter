@@ -10,25 +10,30 @@ window.config(padx=50, pady=20)
 
 def convert():
     if (user_input.get()).replace(".", "").isnumeric():
-        kilometers = float(user_input.get()) * 1.609
-        converted_amount.config(text=kilometers)
-        error_message.config(text="")
+        if convert_from['text'] == "Miles":
+            kilometers = float(user_input.get()) * 1.609
+            converted_amount.config(text=kilometers)
+            error_message.config(text="")
+        elif convert_from['text'] == "Km":
+            miles = float(user_input.get()) / 1.609
+            converted_amount.config(text=miles)
+            error_message.config(text="")
     else:
         error_message.config(text="Please enter a number")
 
 
 def switch_modes(starting_unit):
-    imperial_to_metric = True
+    # imperial_to_metric = True
     # starting_unit = radio_state.get()
     if starting_unit == "Miles":
         convert_from.config(text="Miles")
         convert_to.config(text="Km")
-        imperial_to_metric = True
+        # imperial_to_metric = True
     elif starting_unit == "Kilometers":
         convert_from.config(text="Km")
         convert_to.config(text="Miles")
-        imperial_to_metric = False
-    return imperial_to_metric
+        # imperial_to_metric = False
+    # return imperial_to_metric
 
 
 def button_test():
