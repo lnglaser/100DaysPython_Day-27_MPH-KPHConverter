@@ -11,11 +11,11 @@ window.config(padx=50, pady=20)
 def convert():
     if (user_input.get()).replace(".", "").isnumeric():
         if convert_from['text'] == "Miles":
-            kilometers = float(user_input.get()) * 1.609
+            kilometers = round((float(user_input.get()) * 1.609), 4)
             converted_amount.config(text=kilometers)
             error_message.config(text="")
         elif convert_from['text'] == "Km":
-            miles = float(user_input.get()) / 1.609
+            miles = round((float(user_input.get()) / 1.609), 4)
             converted_amount.config(text=miles)
             error_message.config(text="")
     else:
@@ -69,7 +69,7 @@ error_message = Label()
 error_message.grid(column=1, row=5)
 error_message.config(padx=5, pady=5)
 
-radio_state = StringVar()
+radio_state = StringVar(value="Miles")
 miles_to_km = Radiobutton(text="Miles to KM", value="Miles", variable=radio_state, command=partial(switch_modes, "Miles"))
 miles_to_km.grid(column=0, row=0)
 
