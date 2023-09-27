@@ -32,11 +32,16 @@ def switch_modes():
         convert_to.config(text="Miles")
 
 
+def clear_text(e):
+    user_input.delete(0, "end")
+
+
 # Add placeholder text later
 user_input = Entry(width=10)
 user_input.grid(column=1, row=1)
 user_input.insert(0, "Enter # of miles")
-user_input.focus()
+# user_input.focus()
+user_input.bind("<FocusIn>", clear_text)
 
 convert_from = Label(text="Miles")
 convert_from.grid(column=2, row=1)
