@@ -19,6 +19,7 @@ def convert():
             converted_amount.config(text=miles)
             error_message.config(text="")
     else:
+        converted_amount.config(text=0)
         error_message.config(text="Please enter a number")
 
 
