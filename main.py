@@ -16,6 +16,21 @@ def convert():
         error_message.config(text="Please enter a number")
 
 
+def switch_modes():
+    imperial_to_metric = radio_state.get()
+    if imperial_to_metric == "Miles":
+        convert_from.config(text="Miles")
+        convert_to.config(text="Km")
+    elif imperial_to_metric == "Kilometers":
+        convert_from.config(text="Km")
+        convert_to.config(text="Miles")
+    return imperial_to_metric
+
+
+def button_test():
+    print(f"You clicked a button" + radio_state.get())
+
+
 # Add placeholder text later
 user_input = Entry(width=10)
 user_input.grid(column=1, row=1)
@@ -45,11 +60,11 @@ error_message = Label()
 error_message.grid(column=1, row=5)
 error_message.config(padx=5, pady=5)
 
-radio_state = IntVar()
-miles_to_km = Radiobutton(text="Miles to KM")
+radio_state = StringVar()
+miles_to_km = Radiobutton(text="Miles to KM", value="Miles", variable=radio_state, command=switch_modes)
 miles_to_km.grid(column=0, row=0)
 
-km_to_miles = Radiobutton(text="KM to miles")
+km_to_miles = Radiobutton(text="KM to miles", value="Kilometers", variable=radio_state, command=switch_modes)
 km_to_miles.grid(column=2, row=0)
 
 window.mainloop()
