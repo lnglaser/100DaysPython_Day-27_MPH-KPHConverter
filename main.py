@@ -1,4 +1,3 @@
-from functools import partial
 from tkinter import *
 
 window = Tk()
@@ -23,22 +22,14 @@ def convert():
         error_message.config(text="Please enter a number")
 
 
-def switch_modes(starting_unit):
-    # imperial_to_metric = True
-    # starting_unit = radio_state.get()
+def switch_modes():
+    starting_unit = radio_state.get()
     if starting_unit == "Miles":
         convert_from.config(text="Miles")
         convert_to.config(text="Km")
-        # imperial_to_metric = True
     elif starting_unit == "Kilometers":
         convert_from.config(text="Km")
         convert_to.config(text="Miles")
-        # imperial_to_metric = False
-    # return imperial_to_metric
-
-
-def button_test():
-    print(f"You clicked a button" + radio_state.get())
 
 
 # Add placeholder text later
@@ -71,10 +62,10 @@ error_message.grid(column=1, row=5)
 error_message.config(padx=5, pady=5)
 
 radio_state = StringVar(value="Miles")
-miles_to_km = Radiobutton(text="Miles to KM", value="Miles", variable=radio_state, command=partial(switch_modes, "Miles"))
+miles_to_km = Radiobutton(text="Miles to KM", value="Miles", variable=radio_state, command=switch_modes)
 miles_to_km.grid(column=0, row=0)
 
-km_to_miles = Radiobutton(text="KM to miles", value="Kilometers", variable=radio_state, command=partial(switch_modes, "Kilometers"))
+km_to_miles = Radiobutton(text="KM to miles", value="Kilometers", variable=radio_state, command=switch_modes)
 km_to_miles.grid(column=2, row=0)
 
 window.mainloop()
