@@ -7,6 +7,9 @@ window.eval("tk::PlaceWindow . center")
 window.config(padx=50, pady=20)
 
 
+# Checks if user input is valid (i.e. a number), and if it is, checks which unit is being converted to which (miles or
+# Km). The appropriate calculation is selected and executed, and the result label updated with the outcome. If the user
+# makes an invalid input, an error message is displayed.
 def convert():
     if (user_input.get()).replace(".", "").isnumeric():
         if convert_from['text'] == "Miles":
@@ -22,6 +25,7 @@ def convert():
         error_message.config(text="Please enter a number")
 
 
+# Checks the variable on the selected radio button and changes the two unit labels accordingly.
 def switch_modes():
     starting_unit = radio_state.get()
     if starting_unit == "Miles":
@@ -32,15 +36,14 @@ def switch_modes():
         convert_to.config(text="Miles")
 
 
+# Clears placeholder text when the user clicks into the input field.
 def clear_text(e):
     user_input.delete(0, "end")
 
 
-# Add placeholder text later
 user_input = Entry(width=10)
 user_input.grid(column=1, row=1)
 user_input.insert(0, "Enter # of miles")
-# user_input.focus()
 user_input.bind("<FocusIn>", clear_text)
 
 convert_from = Label(text="Miles")
